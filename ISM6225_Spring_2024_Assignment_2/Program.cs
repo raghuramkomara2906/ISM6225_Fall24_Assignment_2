@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Assignment_2
 {
@@ -38,23 +39,23 @@ namespace Assignment_2
             string binary = DecimalToBinary(decimalNumber);
             Console.WriteLine(binary);
 
-            // Question 6: Find Minimum in Rotated Sorted Array
-            Console.WriteLine("Question 6:");
-            int[] nums5 = { 3, 4, 5, 1, 2 };
-            int minElement = FindMin(nums5);
-            Console.WriteLine(minElement);
+            //// Question 6: Find Minimum in Rotated Sorted Array
+            //Console.WriteLine("Question 6:");
+            //int[] nums5 = { 3, 4, 5, 1, 2 };
+            //int minElement = FindMin(nums5);
+            //Console.WriteLine(minElement);
 
-            // Question 7: Palindrome Number
-            Console.WriteLine("Question 7:");
-            int palindromeNumber = 121;
-            bool isPalindrome = IsPalindrome(palindromeNumber);
-            Console.WriteLine(isPalindrome);
+            //// Question 7: Palindrome Number
+            //Console.WriteLine("Question 7:");
+            //int palindromeNumber = 121;
+            //bool isPalindrome = IsPalindrome(palindromeNumber);
+            //Console.WriteLine(isPalindrome);
 
-            // Question 8: Fibonacci Number
-            Console.WriteLine("Question 8:");
-            int n = 4;
-            int fibonacciNumber = Fibonacci(n);
-            Console.WriteLine(fibonacciNumber);
+            //// Question 8: Fibonacci Number
+            //Console.WriteLine("Question 8:");
+            //int n = 4;
+            //int fibonacciNumber = Fibonacci(n);
+            //Console.WriteLine(fibonacciNumber);
         }
 
         // Question 1: Find Missing Numbers in Array
@@ -62,11 +63,45 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new List<int>(); // Placeholder
+                List<int> missingNumbers = new List<int>();
+
+                // Step 1: Sort the array to handle the numbers in order
+                Array.Sort(nums);
+
+                // Step 2: Loop through the array to find gaps
+                for (int i = 0; i < nums.Length - 1; i++) // Ensure we don't go out of bounds
+                {
+                    int current = nums[i];
+                    int next = nums[i + 1];
+
+                    // Step 3: If there's a gap between current and next
+                    if (current + 1 != next)
+                    {
+                        // Add all missing numbers between current and next
+                        for (int j = current + 1; j < next; j++)
+                        {
+                            missingNumbers.Add(j);
+                        }
+                    }
+                }
+
+                // Step 4: Check if the largest number is less than the length of the array
+                if (nums[nums.Length - 1] < nums.Length)
+                {
+                    missingNumbers.Add(nums.Length);
+                }
+
+                // Step 5: Handle the edge case for an empty array
+                if (nums.Length == 0)
+                {
+                    return missingNumbers;
+                }
+
+                return missingNumbers;
             }
             catch (Exception)
             {
+                //Console.WriteLine("An error occurred: " + ex.Message);
                 throw;
             }
         }
@@ -76,8 +111,28 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                int l= 0;
+                int r = nums.Length-1;
+                while (l<r)
+                {
+                    if (nums[l]%2==0)
+                    {
+                        l++;
+                    }
+                    else if (nums[r]%2!=0)
+                    {
+                        r--;
+                    }
+                    else
+                    {
+                        int temp = nums[r];
+                        nums[r]=nums[l];
+                        nums[l]=temp;
+                        l++;
+                        r--;
+                    }
+                }
+                return nums; // Placeholder
             }
             catch (Exception)
             {
@@ -90,8 +145,17 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                for (int i =0; i <nums.Length; i++)
+                {
+                    for (int j=1;j< nums.Length; j++)
+                    {
+                        if (nums[i]+nums[j]==target)
+                        {
+                            return new int[] {i,j};
+                        }
+                    }
+                }
+                return Array.Empty<int>(); // Placeholder
             }
             catch (Exception)
             {
@@ -104,8 +168,12 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                Array.Sort(nums);
+                int n = nums.Length;
+                int product1 = nums[n-1]*nums[n-2]*nums[n-3]; // Product of three largest numbers
+                int product2 = nums[0]*nums[1]*nums[n-1]; // Product of two smallest and one largest number
+                int maxProduct = Math.Max(product1, product2);
+                return maxProduct;
             }
             catch (Exception)
             {
@@ -118,8 +186,8 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return "101010"; // Placeholder
+                string binary_number = Convert.ToString(decimalNumber,2);
+                return binary_number;
             }
             catch (Exception)
             {
