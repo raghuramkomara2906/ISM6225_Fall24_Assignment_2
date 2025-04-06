@@ -39,11 +39,11 @@ namespace Assignment_2
             string binary = DecimalToBinary(decimalNumber);
             Console.WriteLine(binary);
 
-            //// Question 6: Find Minimum in Rotated Sorted Array
-            //Console.WriteLine("Question 6:");
-            //int[] nums5 = { 3, 4, 5, 1, 2 };
-            //int minElement = FindMin(nums5);
-            //Console.WriteLine(minElement);
+            // Question 6: Find Minimum in Rotated Sorted Array
+            Console.WriteLine("Question 6:");
+            int[] nums5 = { 3, 4, 5, 1, 2 };
+            int minElement = FindMin(nums5);
+            Console.WriteLine(minElement);
 
             //// Question 7: Palindrome Number
             //Console.WriteLine("Question 7:");
@@ -200,8 +200,21 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                int l=0;
+                int r = nums.Length-1;
+                while (l<r)
+                {
+                    int mid = l+(r-l)/2;
+                    if (nums[mid]>nums[r])
+                    {
+                        l=mid+1;
+                    }
+                    else
+                    {
+                        r=mid;
+                    }
+                }
+                return nums[l]; // Placeholder
             }
             catch (Exception)
             {
