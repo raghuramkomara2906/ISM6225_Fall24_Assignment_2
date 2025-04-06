@@ -45,11 +45,11 @@ namespace Assignment_2
             int minElement = FindMin(nums5);
             Console.WriteLine(minElement);
 
-            //// Question 7: Palindrome Number
-            //Console.WriteLine("Question 7:");
-            //int palindromeNumber = 121;
-            //bool isPalindrome = IsPalindrome(palindromeNumber);
-            //Console.WriteLine(isPalindrome);
+            // Question 7: Palindrome Number
+            Console.WriteLine("Question 7:");
+            int palindromeNumber = 121;
+            bool isPalindrome = IsPalindrome(palindromeNumber);
+            Console.WriteLine(isPalindrome);
 
             //// Question 8: Fibonacci Number
             //Console.WriteLine("Question 8:");
@@ -227,8 +227,16 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return false; // Placeholder
+                if(x<0) return false;
+                int original = x;
+                int reversed = 0;
+                while (x>0)
+                {
+                    int digit = x %10;
+                    reversed = reversed*10 + digit;
+                    x/=10;
+                }
+                return original == reversed; // Placeholder
             }
             catch (Exception)
             {
