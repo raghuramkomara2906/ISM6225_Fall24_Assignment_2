@@ -51,11 +51,11 @@ namespace Assignment_2
             bool isPalindrome = IsPalindrome(palindromeNumber);
             Console.WriteLine(isPalindrome);
 
-            //// Question 8: Fibonacci Number
-            //Console.WriteLine("Question 8:");
-            //int n = 4;
-            //int fibonacciNumber = Fibonacci(n);
-            //Console.WriteLine(fibonacciNumber);
+            // Question 8: Fibonacci Number
+            Console.WriteLine("Question 8:");
+            int n = 4;
+            int fibonacciNumber = Fibonacci(n);
+            Console.WriteLine(fibonacciNumber);
         }
 
         // Question 1: Find Missing Numbers in Array
@@ -249,8 +249,18 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                if (n==0) return 0;
+                if (n==1) return 1;
+                int a = 0;
+                int b = 1;
+                int result = 0;
+                for(int i = 2; i<=n; i++)
+                {
+                    result = a+b;
+                    a=b;
+                    b=result;
+                }
+                return result; // Placeholder
             }
             catch (Exception)
             {
